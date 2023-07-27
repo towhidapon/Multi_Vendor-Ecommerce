@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/semi-dark.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/header-colors.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <!-- DataTable -->
+    <link href="{{ asset('admin') }}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css"
+        rel="stylesheet" />
+    <!-- DataTable-->
     <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
 </head>
 
@@ -118,6 +122,19 @@
         });
     </script>
     <script src="{{ asset('admin') }}/assets/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('admin') }}/assets/js/code.js"></script>
+
+    <script src="{{ asset('admin') }}/assets/js/validate.min.js"></script>
+    <!--Datatable-->
+    <script src="{{ asset('admin') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
+    <!--Datatable-->
+
     <!--app JS-->
     <script src="{{ asset('admin') }}/assets/js/app.js"></script>
 
@@ -142,6 +159,8 @@
             }
         @endif
     </script>
+
+
 </body>
 
 </html>
