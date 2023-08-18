@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
     <link rel="icon" href="{{ asset('admin') }}/assets/images/favicon-32x32.png" type="image/png" />
+    <link href="{{ asset('adminbackend') }}/assets/plugins/input-tags/css/tagsinput.css" rel="stylesheet" />
     <!--plugins-->
     <link href="{{ asset('admin') }}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <link href="{{ asset('admin') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -23,6 +24,13 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/semi-dark.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/header-colors.css" />
+    <!-- DataTable -->
+	<link href="{{ asset('admin') }}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- DataTable-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
 </head>
@@ -118,6 +126,16 @@
         });
     </script>
     <script src="{{ asset('admin') }}/assets/js/index.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/validate.min.js"></script>
+
+<!--Datatable-->
+<script src="{{ asset('admin') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+<!--Datatable-->
     <!--app JS-->
     <script src="{{ asset('admin') }}/assets/js/app.js"></script>
 
@@ -142,6 +160,19 @@
             }
         @endif
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('admin') }}/assets/js/code.js"></script>
+
+    <script src="{{ asset('admin') }}/assets/plugins/input-tags/js/tagsinput.js"></script>
+
+        <script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+       </script>
+
+       <script>
+           tinymce.init({
+             selector: '#mytextarea'
+           });
+       </script>
 </body>
 
 </html>

@@ -2,6 +2,8 @@
 @section('user')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+
+
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
@@ -11,6 +13,9 @@
         </div>
     </div>
     <div class="page-content pt-150 pb-150">
+
+        
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 m-auto">
