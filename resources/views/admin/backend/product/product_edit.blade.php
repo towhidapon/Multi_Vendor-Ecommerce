@@ -254,49 +254,55 @@
 
                 <!-- /// End Main Image Thumbnail Update ////// -->
 
-<!-- /// Update Multi Image  ////// -->
 
-<div class="page-content">
-	<h6 class="mb-0 text-uppercase">Update Multi Image </h6>
-	<hr>
-<div class="card">
-<div class="card-body">
-	<table class="table mb-0 table-striped">
-		<thead>
-			<tr>
-				<th scope="col">#Sl</th>
-				<th scope="col">Image</th>
-				<th scope="col">Change Image </th>
-				<th scope="col">Delete </th>
-			</tr>
-		</thead>
-		<tbody>
+                <!-- /// Update Multi Image  ////// -->
 
- <form method="post" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data" >
-			@csrf
+                <div class="page-content">
+                    <h6 class="mb-0 text-uppercase">Update Multi Image </h6>
+                    <hr>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table mb-0 table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#Sl</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Change Image </th>
+                                        <th scope="col">Delete </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-	@foreach($multiImgs as $key => $img)
-	<tr>
-		<th scope="row">{{ $key+1 }}</th>
-		<td> <img src="{{ asset($img->photo_name) }}" style="width:70; height: 40px;"> </td>
-		<td> <input type="file" class="form-group" name="multi_img[{{ $img->id }}]"> </td>
-		<td>
-	<input type="submit" class="btn btn-primary px-4" value="Update Image " />
-	<a href="{{ route('product.multiimg.delete',$img->id) }}" class="btn btn-danger" id="delete" > Delete </a>		
-		</td>
-	</tr>
-	@endforeach
+                                    <form method="post" action="{{ route('update.product.multiimage') }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
 
-		</form>
-		</tbody>
-	</table>
-</div>
-</div>
-</div>
+                                        @foreach ($multiImgs as $key => $img)
+                                            <tr>
+                                                <th scope="row">{{ $key + 1 }}</th>
+                                                <td> <img src="{{ asset($img->photo_name) }}"
+                                                        style="width:70; height: 40px;"> </td>
+                                                <td> <input type="file" class="form-group"
+                                                        name="multi_img[{{ $img->id }}]"> </td>
+                                                <td>
+                                                    <input type="submit" class="btn btn-primary px-4"
+                                                        value="Update Image " />
+                                                    <a href="{{ route('product.multiimg.delete', $img->id) }}"
+                                                        class="btn btn-danger" id="delete"> Delete </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </form>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
 
 
-<!-- /// End Update Multi Image  ////// -->
+                <!-- /// End Update Multi Image  ////// -->
 
             </div>
 

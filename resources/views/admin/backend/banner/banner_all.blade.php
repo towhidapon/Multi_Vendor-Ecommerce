@@ -1,23 +1,24 @@
-@extends('vendor.layout.app')
+@extends('admin.layout.app')
 @section('content')
     <div class="page-wrapper">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <div class="page-content">
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">All Active Vendor</div>
+                <div class="breadcrumb-title pe-3">All Banner</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Active Vendor</li>
+                            <li class="breadcrumb-item active" aria-current="page">All Banner</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-
+                        <a href="{{ route('add.banner') }}" class="btn btn-primary">Add Banner</a>
                     </div>
                 </div>
             </div>
@@ -31,28 +32,25 @@
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Shop Name </th>
-                                    <th>Vendor Username </th>
-                                    <th>Join Date </th>
-                                    <th>Vendor Email </th>
-                                    <th>Status </th>
+                                    <th>Banner Title </th>
+                                    <th>Banner Url </th>
+                                    <th>Banner Image </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($ActiveVendor as $key => $item)
+                                @foreach ($banner as $key => $item)
                                     <tr>
                                         <td> {{ $key + 1 }} </td>
-                                        <td> {{ $item->name }}</td>
-                                        <td> {{ $item->username }}</td>
-                                        <td> {{ $item->vendor_join }}</td>
-                                        <td> {{ $item->email }} </td>
-                                        <td> <span class="btn btn-success">{{ $item->status }}</span> </td>
+                                        <td>{{ $item->banner_title }}</td>
+                                        <td>{{ $item->banner_url }}</td>
+                                        <td> <img src="{{ asset($item->banner_image) }}" style="width: 70px; height:40px;">
+                                        </td>
 
                                         <td>
-                                            <a href="{{ route('active.vendor.details',$item->id) }}" class="btn btn-info">Vendor
-                                                Details</a>
-
+                                            <a href="{{ route('edit.banner', $item->id) }}" class="btn btn-info">Edit</a>
+                                            <a href="{{ route('delete.banner', $item->id) }}" class="btn btn-danger"
+                                                id="delete">Delete</a>
 
                                         </td>
                                     </tr>
@@ -63,11 +61,9 @@
                             <tfoot>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Shop Name </th>
-                                    <th>Vendor Username </th>
-                                    <th>Join Date </th>
-                                    <th>Vendor Email </th>
-                                    <th>Status </th>
+                                    <th>Banner Title </th>
+                                    <th>Banner Url </th>
+                                    <th>Banner Image </th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -79,4 +75,8 @@
 
 
         </div>
-    @endsection
+
+
+
+    </div>
+@endsection

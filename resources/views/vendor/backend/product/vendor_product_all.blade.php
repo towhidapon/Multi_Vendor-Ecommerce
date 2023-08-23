@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('vendor.layout.app')
 @section('content')
     <div class="page-wrapper">
         <div class="page-content">
@@ -44,7 +44,7 @@
                                 @foreach ($products as $key => $item)
                                     <tr>
                                         <td> {{ $key + 1 }} </td>
-                                        <td> <img src="{{ asset($item->product_thambnail) }}"
+                                        <td> <img src="{{ asset($item->product_thumbnail) }}"
                                                 style="width: 70px; height:40px;"> </td>
                                         <td>{{ $item->product_name }}</td>
                                         <td>{{ $item->selling_price }}</td>
@@ -73,20 +73,20 @@
                                         </td>
 
                                         <td>
-                                            <a href="{{ route('edit.product', $item->id) }}" class="btn btn-info"
+                                            <a href="{{ route('vendor.edit.product', $item->id) }}" class="btn btn-info"
                                                 title="Edit Data"> <i class="fa fa-pencil"></i> </a>
 
-                                            <a href="{{ route('delete.product', $item->id) }}" class="btn btn-danger"
+                                            <a href="{{ route('vendor.delete.product', $item->id) }}" class="btn btn-danger"
                                                 id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
 
                                             <a href="{{ route('edit.category', $item->id) }}" class="btn btn-warning"
                                                 title="Details Page"> <i class="fa fa-eye"></i> </a>
 
                                             @if ($item->status == 1)
-                                                <a href="{{ route('product.inactive', $item->id) }}" class="btn btn-primary"
+                                                <a href="{{ route('vendor.product.inactive', $item->id) }}" class="btn btn-primary"
                                                     title="Inactive"> <i class="fa-solid fa-thumbs-down"></i> </a>
                                             @else
-                                                <a href="{{ route('product.active', $item->id) }}" class="btn btn-primary"
+                                                <a href="{{ route('vendor.product.active', $item->id) }}" class="btn btn-primary"
                                                     title="Active"> <i class="fa-solid fa-thumbs-up"></i> </a>
                                             @endif
 

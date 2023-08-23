@@ -77,4 +77,6 @@ class subcategoryController extends Controller
         return json_encode($subcat);
 
     }// End Method
+
+    
 }

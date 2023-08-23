@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('vendor.layout.app')
 @section('content')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
