@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -183,5 +184,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
 }); //End Admin Middleware
+
+/// Frontend Product Details All Route
+
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 
 require __DIR__ . '/auth.php';
