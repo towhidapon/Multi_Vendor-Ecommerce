@@ -13,6 +13,17 @@ use App\Models\User;
 
 class IndexController extends Controller
 {
+
+    // public function Index(){
+
+    //     $hot_deals = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(3)->get();
+    //     $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
+
+    //     return view('frontend.dashboard',compact('hot_deals','special_offer'));
+
+    // } // End Method
+
+
     public function ProductDetails($id,$slug){
 
         $product = Product::findOrFail($id);
