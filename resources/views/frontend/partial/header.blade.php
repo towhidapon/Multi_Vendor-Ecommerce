@@ -117,45 +117,30 @@
                                 </a>
                                 <a href="shop-wishlist.html"><span class="lable">Wishlist</span></a>
                             </div>
+
+
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.html">
                                     <img alt="Nest"
                                         src="{{ asset('frontend') }}/assets/imgs/theme/icons/icon-cart.svg" />
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue" id="cartQty"> </span>
                                 </a>
                                 <a href="shop-cart.html"><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                    <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="{{ asset('frontend') }}/assets/imgs/shop/thumbnail-3.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="{{ asset('frontend') }}/assets/imgs/shop/thumbnail-2.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
+
+
+                                    <!--   // mini cart start with ajax -->
+                                    <div id="miniCart">
+
+                                    </div>
+
+                                    <!--   // End mini cart start with ajax -->
+
+
+
                                     <div class="shopping-cart-footer">
                                         <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
+                                            <h4>Total <span  id="cartSubTotal"> </span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
                                             <a href="shop-cart.html" class="outline">View cart</a>
@@ -173,45 +158,24 @@
                                 @auth
                                     <a href="page-account.html"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                        {{-- <ul>
-                                        <li>
-                                            <a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>My
-                                                Account</a>
-                                        </li>
-                                        <li>
-                                            <a href="page-account.html"><i
-                                                    class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
-                                        </li>
-                                        <li>
-                                            <a href="page-account.html"><i class="fi fi-rs-label mr-10"></i>My
-                                                Voucher</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-wishlist.html"><i class="fi fi-rs-heart mr-10"></i>My
-                                                Wishlist</a>
-                                        </li>
-                                        <li>
-                                            <a href="page-account.html"><i
-                                                    class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
-                                        </li>
-                                        <li>
-                                            <a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
-                                        </li>
-                                    </ul> --}}
+
 
                                         <ul>
                                             <li>
-                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My Account</a>
+                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My
+                                                    Account</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('dashboard') }}"><i
                                                         class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-label mr-10"></i>My Voucher</a>
+                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-label mr-10"></i>My
+                                                    Voucher</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a>
+                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-heart mr-10"></i>My
+                                                    Wishlist</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('dashboard') }}"><i
@@ -246,7 +210,7 @@
 
 
     @php
-    $categories = App\Models\Category::orderBy('category_name','ASC')->get();
+        $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
     @endphp
 
 
@@ -266,18 +230,22 @@
                         <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
                             <div class="d-flex categori-dropdown-inner">
                                 <ul>
-                                    @foreach($categories as $item)
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
-                                    </li>
-                                   @endforeach
+                                    @foreach ($categories as $item)
+                                        <li>
+                                            <a href="shop-grid-right.html"> <img
+                                                    src="{{ asset($item->category_image) }}" alt="" />
+                                                {{ $item->category_name }} </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                                 <ul class="end">
-                                     @foreach($categories as $item)
-                                    <li>
-                                        <a href="shop-grid-right.html"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
-                                    </li>
-                                   @endforeach
+                                    @foreach ($categories as $item)
+                                        <li>
+                                            <a href="shop-grid-right.html"> <img
+                                                    src="{{ asset($item->category_image) }}" alt="" />
+                                                {{ $item->category_name }} </a>
+                                        </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
@@ -326,35 +294,43 @@
                             <ul>
 
                                 <li>
-                                    <a class="active" href="index.html">Home  </a>
+                                    <a class="active" href="{{ url('/') }}">Home </a>
 
-                        </li>
-                        @php
-                        $categories = App\Models\Category::orderBy('category_name','ASC')->limit(6)->get();
-                        @endphp
+                                </li>
+                                @php
+                                    $categories = App\Models\Category::orderBy('category_name', 'ASC')
+                                        ->limit(6)
+                                        ->get();
+                                @endphp
 
-                           @foreach($categories as $category)
-                            <li>
-                                <a href="#">{{ $category->category_name }} <i class="fi-rs-angle-down"></i></a>
+                                @foreach ($categories as $category)
+                                    <li>
+                                        <a
+                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}
+                                            <i class="fi-rs-angle-down"></i></a>
 
-                       @php
-                        $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name','ASC')->get();
-                            @endphp
+                                        @php
+                                            $subcategories = App\Models\SubCategory::where('category_id', $category->id)
+                                                ->orderBy('subcategory_name', 'ASC')
+                                                ->get();
+                                        @endphp
 
-                                <ul class="sub-menu">
-                                    @foreach($subcategories as $subcategory)
-                                    <li><a href="vendors-grid.html">{{ $subcategory->subcategory_name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            @endforeach
-
-
-
-                                   <li>
-                                        <a href="page-contact.html">Contact</a>
+                                        <ul class="sub-menu">
+                                            @foreach ($subcategories as $subcategory)
+                                                <li><a
+                                                        href="{{ url('product/subcategory/' . $subcategory->id . '/' . $subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </li>
-                                </ul>
+                                @endforeach
+
+
+
+                                <li>
+                                    <a href="page-contact.html">Contact</a>
+                                </li>
+                            </ul>
                         </nav>
                     </div>
                 </div>

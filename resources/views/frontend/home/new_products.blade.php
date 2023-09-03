@@ -12,7 +12,8 @@
             <h3> New Products </h3>
             <ul class="nav nav-tabs links" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="nav-tab-one"  data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">All</button>
+                    <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one"
+                        type="button" role="tab" aria-controls="tab-one" aria-selected="true">All</button>
                 </li>
 
                 @foreach ($categories as $category)
@@ -36,7 +37,7 @@
                                 data-wow-delay=".1s">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
+                                        <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">
                                             <img class="default-img" src="{{ asset($product->product_thumbnail) }}"
                                                 alt="" />
 
@@ -48,7 +49,8 @@
                                         <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
                                                 class="fi-rs-shuffle"></i></a>
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                            data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                            data-bs-target="#quickViewModal" id="{{ $product->id }}"
+                                            onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                     </div>
                                     @php
                                         $amount = $product->selling_price - $product->discount_price;
@@ -131,18 +133,16 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-right.html">
-                                                <img class="default-img"
-                                                    src="{{ asset($product->product_thumbnail) }}" alt="" />
+                                                <img class="default-img" src="{{ asset($product->product_thumbnail) }}"
+                                                    alt="" />
 
                                             </a>
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Add To Wishlist" class="action-btn"
                                                 href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i
-                                                    class="fi-rs-shuffle"></i></a>
-                                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                                                data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                            <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                         </div>
 
                                         @php
@@ -167,7 +167,9 @@
                                             <a
                                                 href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
                                         </div>
-                                        <h2><a href="url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
+                                        <h2><a
+                                                href="url('product/details/'.$product->id.'/'.$product->product_slug) }}">
+                                                {{ $product->product_name }} </a></h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
