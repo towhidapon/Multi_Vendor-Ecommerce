@@ -15,7 +15,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
-use App\Models\Category;
+use App\Http\Controllers\Backend\CouponController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
@@ -188,6 +188,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/banner', 'UpdateBanner')->name('update.banner');
         Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
+
+    // Coupon All Route
+    Route::controller(CouponController::class)->group(function () {
+        Route::get('/all/coupon', 'AllCoupon')->name('all.coupon');
+        Route::get('/add/coupon' , 'AddCoupon')->name('add.coupon');
+        Route::post('/store/coupon' , 'StoreCoupon')->name('store.coupon');
+        Route::get('/edit/coupon/{id}' , 'EditCoupon')->name('edit.coupon');
+        Route::post('/update/coupon' , 'UpdateCoupon')->name('update.coupon');
+        Route::get('/delete/coupon/{id}' , 'DeleteCoupon')->name('delete.coupon');
+    });
 }); //End Admin Middleware
 
 /// Frontend Product Details All Route
@@ -238,14 +248,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/compare-remove/{id}', 'CompareRemove');
     });
 
-    // Cart All Route 
+    // Cart All Route
     Route::controller(CartController::class)->group(function () {
         Route::get('/mycart', 'MyCart')->name('mycart');
         Route::get('/get-cart-product', 'GetCartProduct');
-        Route::get('/cart-remove/{rowId}' , 'CartRemove');
-        Route::get('/cart-decrement/{rowId}' , 'CartDecrement');
-        Route::get('/cart-increment/{rowId}' , 'CartIncrement');
-
+        Route::get('/cart-remove/{rowId}', 'CartRemove');
+        Route::get('/cart-decrement/{rowId}', 'CartDecrement');
+        Route::get('/cart-increment/{rowId}', 'CartIncrement');
     });
 }); // end group user middleware
 
