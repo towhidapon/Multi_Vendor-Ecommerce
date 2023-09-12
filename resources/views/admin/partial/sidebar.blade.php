@@ -118,6 +118,33 @@
             </ul>
         </li>
 
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Shipping Area </div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.division') }}"><i class="bx bx-right-arrow-alt"></i>All Division</a>
+                </li>
+                <li> <a href="{{ route('add.division') }}"><i class="bx bx-right-arrow-alt"></i>Add Division</a>
+                </li>
+            </ul>
+            <ul>
+                <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>All District</a>
+                </li>
+                <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>Add District</a>
+                </li>
+            </ul>
+            <ul>
+                <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>All State</a>
+                </li>
+                <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>Add State</a>
+                </li>
+            </ul>
+        </li>
+
+
         <li class="menu-label">UI Elements</li>
 
         <li>
@@ -127,7 +154,8 @@
                 <div class="menu-title">Manage Vendor</div>
             </a>
             <ul>
-                <li> <a href="{{ route('inactive.vendor') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
+                <li> <a href="{{ route('inactive.vendor') }}"><i class="bx bx-right-arrow-alt"></i>Inactive
+                        Vendor</a>
                 </li>
                 <li> <a href="{{ route('active.vendor') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendor</a>
                 </li>

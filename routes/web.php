@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
@@ -118,7 +119,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 
-
+    // Category All Route
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/all/category', 'AllCategory')->name('all.category');
         Route::get('/add/category', 'AddCategory')->name('add.category');
@@ -129,7 +130,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 
-
+    // Subcategory All Route
     Route::controller(SubcategoryController::class)->group(function () {
         Route::get('/all/subcategory', 'AllSubcategory')->name('all.subcategory');
         Route::get('/add/subcategory', 'AddSubcategory')->name('add.subcategory');
@@ -192,11 +193,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Coupon All Route
     Route::controller(CouponController::class)->group(function () {
         Route::get('/all/coupon', 'AllCoupon')->name('all.coupon');
-        Route::get('/add/coupon' , 'AddCoupon')->name('add.coupon');
-        Route::post('/store/coupon' , 'StoreCoupon')->name('store.coupon');
-        Route::get('/edit/coupon/{id}' , 'EditCoupon')->name('edit.coupon');
-        Route::post('/update/coupon' , 'UpdateCoupon')->name('update.coupon');
-        Route::get('/delete/coupon/{id}' , 'DeleteCoupon')->name('delete.coupon');
+        Route::get('/add/coupon', 'AddCoupon')->name('add.coupon');
+        Route::post('/store/coupon', 'StoreCoupon')->name('store.coupon');
+        Route::get('/edit/coupon/{id}', 'EditCoupon')->name('edit.coupon');
+        Route::post('/update/coupon', 'UpdateCoupon')->name('update.coupon');
+        Route::get('/delete/coupon/{id}', 'DeleteCoupon')->name('delete.coupon');
+    });
+
+    // Shipping Division All Route
+    Route::controller(ShippingAreaController::class)->group(function () {
+        Route::get('/all/division', 'AllDivision')->name('all.division');
+        Route::get('/add/division', 'AddDivision')->name('add.division');
+        Route::post('/store/division', 'StoreDivision')->name('store.division');
+        Route::get('/edit/division/{id}', 'EditDivision')->name('edit.division');
+        Route::post('/update/division', 'UpdateDivision')->name('update.division');
+        Route::get('/delete/division/{id}', 'DeleteDivision')->name('delete.division');
     });
 }); //End Admin Middleware
 
