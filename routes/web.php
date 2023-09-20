@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\User\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
@@ -263,6 +264,27 @@ Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToW
 
 /// Add to Compare
 Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
+
+/// Frontend Coupon Option
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
+
+// Checkout Page Route
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
+ // Checkout All Route
+ Route::controller(CheckoutController::class)->group(function(){
+    //Route::get('/district-get/ajax/{division_id}' , 'DistrictGetAjax');
+    Route::get('/get-district/{division_id}', 'DistrictGetAjax');
+    Route::get('/get-state/{state_id}', 'StateGetAjax');
+    // Route::get('/state-get/ajax/{district_id}' , 'StateGetAjax');
+    Route::post('/checkout/store' , 'CheckoutStore')->name('checkout.store');
+
+});
+
 
 
 /// User All Route
